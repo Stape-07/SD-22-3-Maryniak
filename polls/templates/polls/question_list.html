@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Опитування</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f1f3f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 60px auto;
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            background-color: #eef2f7;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #4a90e2;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        li:hover {
+            background-color: #e0e7f0;
+        }
+
+        h2 {
+            margin: 0 0 8px;
+            font-size: 20px;
+            color: #34495e;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .no-questions {
+            text-align: center;
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Список питань</h1>
+        {% if questions %}
+            <ul>
+            {% for question in questions %}
+                <li>
+                    <h2>{{ question.question_text }}</h2>
+                    <p class="date">Опубліковано: {{ question.pub_date|date:"d.m.Y H:i" }}</p>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-questions">Питань поки що немає.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
